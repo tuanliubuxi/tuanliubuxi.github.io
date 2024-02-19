@@ -1,143 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <title>新年祝福</title>
-  <style>
-    
-    html {
-      height: 100%;
-      background: linear-gradient(to right, #ff0000, #ff8c00);
-    }
-    
-    body {
-      margin: 0;
-      overflow: hidden;
-      height: 100%;
-    }
-    
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-    } 
-    
-    #text-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #ffffff; /* 文字颜色设置为白色 */
-      font-family: 'Brush Script MT', cursive; /* 更改字体 */
-      font-size: 72px;
-      opacity: 0;
-      animation: fade-in 2s forwards;
-      white-space: nowrap; /* 文本不换行 */
-      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); /* 添加阴影效果以增强可读性 */
-    }
-    
-    @keyframes fade-in {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-    
-    #firework-container {
-      position: absolute;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>恶作剧页面</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffc0cb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .text {
+            font-size: 3rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px #000000;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            document.body.addEventListener("click", function(event) {
+                var newAlertText = document.createElement("div");
+                newAlertText.innerHTML = "卷王，别学了！！！";
+                newAlertText.style.position = "absolute";
+                newAlertText.style.left = event.clientX + "px";
+                newAlertText.style.top = event.clientY + "px";
+        
+                // 随机颜色
+                var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                newAlertText.style.color = randomColor;
+
+                // 随机大小
+                var randomSize = Math.floor(Math.random() * 25) + 5; // 生成50到150之间的随机数
+                newAlertText.style.fontSize = randomSize + "px";
+        
+                document.body.appendChild(newAlertText);
+        
+                // 设置定时器，让元素在一秒后消失
+                setTimeout(function() {
+                    document.body.removeChild(newAlertText);
+                }, 500);
+            });
+        }
+    </script>    <link href="https://fonts.googleapis.com/css?family=Segoe+UI&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="text-container">
-    <h1>新年快乐！</h1>
-    <h3>在新的一年，祝大家：</h3>
-    <h5>龙腾四海</h5>
-    <h5>吉祥如意</h5>
-    <h5>岁岁平安</h5>
-  </div>
-  
-  <canvas id="particle-canvas"></canvas>
-  <div id="firework-container"></div>
-  
-  <script>
-    // 创建粒子效果
-    const particleCanvas = document.getElementById('particle-canvas');
-    const particleCtx = particleCanvas.getContext('2d');
-    let particles = [];
-    
-    function createParticle(x, y, color) {
-      const particle = {
-        x: x,
-        y: y,
-        size: Math.random() * 10 + 5,
-        speedX: Math.random() * 10 - 5,
-        speedY: Math.random() * 10 - 5,
-        color: color
-      };
-      particles.push(particle);
-    }
-    
-    function animateParticles() {
-      particleCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
-      
-      for (let i = 0; i < particles.length; i++) {
-        const particle = particles[i];
-        
-        particleCtx.fillStyle = particle.color;
-        particleCtx.beginPath();
-        particleCtx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        particleCtx.fill();
-        
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-        particle.size -= 0.1;
-        
-        if (particle.size <= 0) {
-          particles.splice(i, 1);
-          i--;
-        }
-      }
-      
-      requestAnimationFrame(animateParticles);
-    }
-    
-    function createFirework(x, y) {
-      const color = getRandomColor();
-      for (let i = 0; i < 50; i++) {
-        createParticle(x, y, color);
-      }
-    }
-    
-    // 随机颜色
-    function getRandomColor() {
-      const letters = '0123456789ABCDEF';
-      let color = '#';
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    }
-    
-    // 自动触发烟花效果
-    function autoFireworks() {
-      const x = Math.random() * window.innerWidth;
-      const y = Math.random() * window.innerHeight;
-      createFirework(x, y);
-      setTimeout(autoFireworks, Math.random() * 500 + 500); // 控制触发间隔
-    }
-    autoFireworks();
-    
-    // 调整画布尺寸
-    function resizeCanvas() {
-      particleCanvas.width = window.innerWidth;
-      particleCanvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    animateParticles();
-  </script>
+    <div class="text">卷王，别学了！</div>
 </body>
 </html>
+
+
+
