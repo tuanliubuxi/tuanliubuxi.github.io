@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卷王，别学了！</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffc0cb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .text {
+            font-size: 3rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px #000000;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            document.body.addEventListener("click", function(event) {
+                var newAlertText = document.createElement("div");
+                newAlertText.innerHTML = "卷王，别学了！！！";
+                newAlertText.style.position = "absolute";
+                newAlertText.style.left = event.clientX + "px";
+                newAlertText.style.top = event.clientY + "px";
+        
+                // 随机颜色
+                var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                newAlertText.style.color = randomColor;
+
+                // 随机大小
+                var randomSize = Math.floor(Math.random() * 25) + 5; // 生成50到150之间的随机数
+                newAlertText.style.fontSize = randomSize + "px";
+        
+                document.body.appendChild(newAlertText);
+        
+                // 设置定时器，让元素在一秒后消失
+                setTimeout(function() {
+                    document.body.removeChild(newAlertText);
+                }, 500);
+            });
+        }
+    </script>    <link href="https://fonts.googleapis.com/css?family=Segoe+UI&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="text">卷王，别学了！</div>
+</body>
+</html>
+
+
+
