@@ -1,35 +1,58 @@
 <!DOCTYPE html>
-<html>
-  <head>
-	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>WebCat</title>
-  </head>
-  <body>	
-  <!DOCTYPE html><html><head><meta charset="UTF-8">
-<meta content="always" name="referrer" />
-<script>
-try {
-    var list = JSON.parse(localStorage.getItem("tc_time_log") || "[]");
-    list.push({
-        t: +new Date,
-        b: parseInt("10"),
-        w: (+new Date) - parseInt(localStorage.getItem("tc_time_start") || "0")
-    });
-    localStorage.setItem("tc_time_log", JSON.stringify(list));
-    localStorage.removeItem("tc_time_start");
-} catch (e) {
-}
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卷王，别学了！</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffc0cb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-window.location.replace("https://cdn.198434.com/cli/H5/sheep2sheepkun/");
-</script>
-<noscript>
-<meta http-equiv="refresh" content="0; url=https://cdn.198434.com/cli/H5/sheep2sheepkun/" />
-</noscript>
+        .text {
+            font-size: 3rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px #000000;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            document.body.addEventListener("click", function(event) {
+                var newAlertText = document.createElement("div");
+                newAlertText.innerHTML = "卷王，别学了！！！";
+                newAlertText.style.position = "absolute";
+                newAlertText.style.left = event.clientX + "px";
+                newAlertText.style.top = event.clientY + "px";
+        
+                // 随机颜色
+                var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                newAlertText.style.color = randomColor;
+
+                // 随机大小
+                var randomSize = Math.floor(Math.random() * 25) + 5; // 生成50到150之间的随机数
+                newAlertText.style.fontSize = randomSize + "px";
+        
+                document.body.appendChild(newAlertText);
+        
+                // 设置定时器，让元素在一秒后消失
+                setTimeout(function() {
+                    document.body.removeChild(newAlertText);
+                }, 500);
+            });
+        }
+    </script>    <link href="https://fonts.googleapis.com/css?family=Segoe+UI&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="text">卷王，别学了！</div>
 </body>
 </html>
 
 
-  </body>
-</html>
